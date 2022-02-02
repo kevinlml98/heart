@@ -1,78 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FeelMe</title>
+  <title>App2</title>
+  <meta charset="utf-8">
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="Wadie Mendja">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+  <script src='https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js'></script>
 
-    <style>
-        
-        body{
-            margin: 0;
-            padding: 0;
-        }
-        .heart-container{
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #0b1522;
-        }
+  <style>
 
-        
-        .heart {
-            height: 70px;
-            width: 70px;
-            background: #f20044;
-            position: relative;
-            transform: rotate(-45deg);
-            box-shadow: -10px 10px 90px #f20044;
-            animation: heart 0.6s infinite;
-        }
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #0b1522;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.heart-container{
+    
+}
 
-        @keyframes heart{
-            0%{
-                transform: rotate(-45deg) scale(1.07);
-            }
-            80%{
-                transform: rotate(-45deg) scale(1.0);
-            }
-            100%{
-                transform: rotate(-45deg) scale(0.8);
-            }
-        }
 
-        .heart:before {
-            content: '';
-            position: absolute;
-            height: 70px;
-            width: 70px;
-            background-color: #f20044;
-            top: -50%;
-            border-radius: 50px;
-            box-shadow: -10px -10px 90px #f20044;
-        }
-        .heart:after {
-            content: '';
-            position: absolute;
-            height: 70px;
-            width: 70px;
-            background-color: #f20044;
-            right: -50%;
-            border-radius: 50px;
-            box-shadow: 10px 10px 90px #f20044;
-        }
+.heart {
+    height: 70px;
+    width: 70px;
+    background: #f20044;
+    position: relative;
+    transform: rotate(-45deg);
+    box-shadow: -10px 10px 90px #f20044;
+    animation: heart 0.7s infinite;
+}
 
-        
+@keyframes heart{
+    0%{
+        transform: rotate(-45deg) scale(1.07);
+    }
+    80%{
+        transform: rotate(-45deg) scale(1.0);
+    }
+    100%{
+        transform: rotate(-45deg) scale(0.8);
+    }
+}
 
-    </style>
+.heart:before {
+    content: '';
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background-color: #f20044;
+    top: -50%;
+    border-radius: 50px;
+    box-shadow: -10px -10px 90px #f20044;
+}
+.heart:after {
+    content: '';
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background-color: #f20044;
+    right: -50%;
+    border-radius: 50px;
+    box-shadow: 10px 10px 90px #f20044;
+}
+  </style>
 
-</head>
-<body>
-    <div class="heart-container">
-        <div class="heart">
+  </head>
+
+    <body>
+
+        <div class='heart-container'>
+        <div class='heart'>
+        </div> <br>
+        <h1 style='color:#fff'>404</h1> 
         </div>
-    </div>
-</body>
+
+
+
+
+
+
+
+
+        <script>
+            var firebaseConfig = {
+            apiKey: "AIzaSyBE1GJDMdsDrmhHAlLeKk3iDy9kS3IaY0k",
+            authDomain: "kevin-heart.firebaseapp.com",
+            databaseURL: "https://kevin-heart-default-rtdb.firebaseio.com/",
+            projectId: "kevin-heart",
+            storageBucket: "kevin-heart.appspot.com",
+            messagingSenderId: "115034950455",
+            appId: "1:115034950455:web:07d694f8c8438134e368b2"
+            };
+
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            var firebaseRef = firebase.database().ref("users");
+            firebaseRef.once("value", function(snapshot){
+                snapshot.forEach(function(element){
+                    console.log(element.val());
+                });
+            });
+
+
+        </script>
+  
+    </body>
 </html>
