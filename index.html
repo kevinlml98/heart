@@ -76,7 +76,10 @@ body{
         <div class='heart-container'>
         <div class='heart'>
         </div> <br>
-        <h1 style='color:#fff'>404</h1> 
+        <div style="text-align: center;">
+            <h1 id="my-heart" style='color:#fff'></h1> 
+        </div>
+        
         </div>
 
 
@@ -104,7 +107,8 @@ body{
             var firebaseRef = firebase.database().ref("users");
             firebaseRef.on("value", function(snapshot){
                 snapshot.forEach(function(element){
-                    console.log(element.val());
+                    let bpm = element.val().value;
+                    document.getElementById("my-heart").innerText = bpm;
                 });
             });
 
