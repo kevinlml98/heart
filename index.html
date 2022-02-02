@@ -102,7 +102,7 @@ body{
             firebase.initializeApp(firebaseConfig);
 
             var firebaseRef = firebase.database().ref("users");
-            firebaseRef.once("value", function(snapshot){
+            firebaseRef.on("value", function(snapshot){
                 snapshot.forEach(function(element){
                     console.log(element.val());
                 });
